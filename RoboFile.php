@@ -82,8 +82,7 @@ class RoboFile extends \Robo\Tasks
  		}
 	}
 
-	public function vhostconfig($fastcgi_pass = "")
-    {
+	public function vhostconfig($fastcgi_pass = "") {
         $site = $this->ask("Enter site name: ");
         if(!is_file("/etc/nginx/sites-available/".$site)){
             
