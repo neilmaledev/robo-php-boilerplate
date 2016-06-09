@@ -9,3 +9,5 @@ e.g.
 
 'path/somestyle.css' -> 'path/somestyle.css?ver=201606092111'
 
+## function vhostconfig()
+Automatic vhost config for fastcgi
