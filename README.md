@@ -7,5 +7,5 @@ e.g.
 
 'path/somescript.js' -> 'path/somescripts.js?ver=201606092111'
 
-'path/somestyle.css' -> 'path/somescripts.css?ver=201606092111'
+'path/somestyle.css' -> 'path/somestyle.css?ver=201606092111'
 
