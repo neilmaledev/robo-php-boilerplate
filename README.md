@@ -1,5 +1,5 @@
 # robo-php-boilerplate
-RoboFile.php raw -> https://gist.github.com/neilmaledev/ff9647b420e33698c9537caa2f00fdc7
+Playing with Robo task in php
 
 ## function version()
 Automatic versioning of modified js/css files using robo
