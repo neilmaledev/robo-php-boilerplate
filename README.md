@@ -1,7 +1,10 @@
 # robo-php-boilerplate
 Playing with Robo task in php
 
-## function version()
+## app()
+For setting up your project
+
+## version()
 Automatic versioning of modified js/css files using robo
 
 e.g. 
@@ -10,5 +13,5 @@ e.g.
 
 'path/somestyle.css' -> 'path/somestyle.css?ver=201606092111'
 
-## function vhostconfig()
+## vhostconfig()
 Automatic vhost config for fastcgi
