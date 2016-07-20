@@ -6,7 +6,46 @@
  */
 class RoboFile extends \Robo\Tasks
 {
-​
+​	
+	const JSON_APP = "app.json";
+	const DIR_MODULE = "modules"; //directory
+
+	function app($cmd = '', $type = '') {
+		$this->say($cmd);
+
+		if($cmd == 'init') {
+			if(!file_exists(RoboFile::JSON_APP)) {
+				$jsonInit['name'] = $this->ask("Name: ");
+				file_put_contents(RoboFile::JSON_APP, json_encode($jsonInit, JSON_PRETTY_PRINT));
+				$this->say(RoboFile::JSON_APP . ' installed');
+			} else {
+				$this->say(RoboFile::JSON_APP . ' already exist');
+			};
+			
+		} else if($cmd == 'install') {
+			if($type == 'module') {
+				$moduleName = $this->ask("Module name (required): ");
+				$moduleRepo = $this->ask("Module repo(HTTPS) (required): ");
+
+				$clone = $this->taskGitStack()
+				->cloneRepo($moduleRepo, RoboFile::DIR_MODULE . '/' . $moduleName)
+				->stopOnFail()
+				->run();
+
+				//sample repo => https://github.com/neilmaledev/numeric-input-directive.git
+
+				//baguhin dito, lagyan ng condition
+				//saka lang dapat maeexecute yang nasa baba pag success yung $clone
+				$jsonDecoded = json_decode(file_get_contents(RoboFile::JSON_APP), true);
+				$jsonDecoded['modules'][$moduleName] = $moduleRepo;
+				file_put_contents(RoboFile::JSON_APP, json_encode($jsonDecoded, JSON_PRETTY_PRINT));
+			}
+		} else {
+			$this->say("init => 'install app.json' ");
+			$this->say("install => [ module => 'to install new module' ] ");
+		}
+	}
+
 	function replaceInFile($file, $from, $to) {
 		$this->taskReplaceInFile($file)
 			->from($from)
