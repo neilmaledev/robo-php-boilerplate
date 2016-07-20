@@ -64,7 +64,7 @@ class RoboFile extends \Robo\Tasks
 
 		$this->taskGitStack()
  			->stopOnFail()
- 			->exec("git diff --name-only | grep -E '\.js|\.css' > gitdiff.txt")
+ 			->exec("git diff --name-only | grep -E '\.js|\.css|\.less' > gitdiff.txt")
  			->printed(true)
  			->run();
 
@@ -80,7 +80,7 @@ class RoboFile extends \Robo\Tasks
  		foreach($files as $file) {
 
 			$filePath = substr($file, 7); //remove the 'public/'
-			$newVersion = date_format(date_create(), 'YmdHs');
+			$newVersion = date('YmdHs');
 
 			$fileVersion = $filePath . '?ver=' . $newVersion;
 
